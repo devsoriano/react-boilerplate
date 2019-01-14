@@ -3,7 +3,7 @@ import { render } from 'react-testing-library'
 import App from './App'
 
 describe('App', () => {
-  it('Render Without error', () => {
+  it('Renders without error', () => {
     render(<App />)
   })
 })
