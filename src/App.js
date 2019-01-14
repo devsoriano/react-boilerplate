@@ -13,14 +13,15 @@ class App extends React.Component {
   decrement = () => this.setState(state => ({ count: state.count - 1 }))
 
   render() {
+    //throw new Error('Boom!')
     //debugger
     const { count } = this.state
     return (
       <div>
         <h1>Hello World</h1>
-        <img alt="company logo" src="./log/png" />
         <h2 className={count > 10 ? 'warning' : null}>
-          Count: {this.state.count}
+          {' '}
+          Count: {this.state.count}{' '}
         </h2>
         <button onClick={this.increment}>+</button>
         <button onClick={this.decrement}>-</button>
