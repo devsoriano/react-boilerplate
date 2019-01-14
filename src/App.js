@@ -1,10 +1,37 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
+
+const Warning = React.lazy(() => import('./Warning'))
 
 class App extends React.Component {
+  state = {
+    count: 0
+  }
+
+  increment = () => this.setState(state => ({ count: state.count + 1 }))
+
+  decrement = () => this.setState(state => ({ count: state.count - 1 }))
+
   render() {
     //debugger
-    return <h1>Hello World from the dev server!!!</h1>
+    const { count } = this.state
+    return (
+      <div>
+        <h1>Hello World</h1>
+        <img alt="company logo" src="./log/png" />
+        <h2 className={count > 10 ? 'warning' : null}>
+          Count: {this.state.count}
+        </h2>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
+        {count > 10 ? (
+          <React.Suspense fallback={null}>
+            <Warning />
+          </React.Suspense>
+        ) : null}
+      </div>
+    )
   }
 }
 
-export default App
+export default hot(module)(App)
